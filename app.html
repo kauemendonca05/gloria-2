@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+    <title>GLORIA - Discipulado Digital</title>
+    <link rel="manifest" href="/manifest.json"/>
+    <meta name="theme-color" content="#1754cf"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-title" content="GLORIA"/>
+    <link rel="apple-touch-icon" href="/icons/icon-192.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c212e",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#2d3342",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            min-height: 100dvh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: flex;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .live-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        /* Badge GLORIA */
+        .gloria-badge {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased">
+
+<!-- TELA INICIAL (HOME) -->
+<div id="screen-home" class="screen active flex-col min-h-screen pb-24">
+    <!-- Header com paisagem -->
+    <header class="relative h-72 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=90');"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-background-light dark:to-background-dark"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-white">
+            <div class="gloria-badge px-8 py-4 rounded-2xl mb-3">
+                <h1 class="text-5xl font-black tracking-tight drop-shadow-lg">GLORIA</h1>
+            </div>
+            <p class="text-white/90 text-sm font-medium tracking-wide">Tecnologia que acolhe. Fé que acompanha.</p>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="px-4 -mt-8 relative z-20">
+        <div class="flex flex-wrap gap-3">
+            <div class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 items-center text-center shadow-lg">
+                <span class="material-symbols-outlined text-orange-500 mb-1 filled">local_fire_department</span>
+                <p class="text-2xl font-extrabold leading-tight">12</p>
+                <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">Sequência</p>
+            </div>
+            <div class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 items-center text-center shadow-lg">
+                <span class="material-symbols-outlined text-primary mb-1">school</span>
+                <p class="text-2xl font-extrabold leading-tight">6</p>
+                <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">Cursos</p>
+            </div>
+            <div class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-4 items-center text-center shadow-lg">
+                <span class="material-symbols-outlined text-green-500 mb-1">pie_chart</span>
+                <p class="text-2xl font-extrabold leading-tight">85%</p>
+                <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wide">Conclusão</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minha Jornada -->
+    <section class="flex flex-col gap-4 mt-6">
+        <div class="px-4 flex items-center justify-between">
+            <h2 class="text-[20px] font-bold leading-tight tracking-tight">Minha Jornada</h2>
+            <button class="text-primary text-sm font-bold">Ver tudo</button>
+        </div>
+        <div class="flex overflow-x-auto pb-4 px-4 gap-4 snap-x snap-mandatory no-scrollbar">
+            <!-- Card 1 -->
+            <div class="snap-center shrink-0 w-[280px] flex flex-col rounded-2xl shadow-lg bg-surface-light dark:bg-surface-dark overflow-hidden border border-border-light dark:border-border-dark">
+                <div class="relative w-full h-32 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=800&q=90");'>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3">
+                        <div class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-md self-start">Em andamento</div>
+                    </div>
+                </div>
+                <div class="p-3 flex flex-col gap-2">
+                    <h3 class="text-base font-bold leading-tight">Fundamentos da Fé</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs">Módulo 3: Entendendo a Oração</p>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <span class="text-[10px] font-medium text-slate-500">65% Concluído</span>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="snap-center shrink-0 w-[280px] flex flex-col rounded-2xl shadow-lg bg-surface-light dark:bg-surface-dark overflow-hidden border border-border-light dark:border-border-dark">
+                <div class="relative w-full h-32 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&q=90");'>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3">
+                        <div class="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-md self-start">Novo</div>
+                    </div>
+                </div>
+                <div class="p-3 flex flex-col gap-2">
+                    <h3 class="text-base font-bold leading-tight">Casamento Cristão</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs">Módulo 1: Fundamentos Bíblicos</p>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 20%"></div>
+                    </div>
+                    <span class="text-[10px] font-medium text-slate-500">20% Concluído</span>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="snap-center shrink-0 w-[280px] flex flex-col rounded-2xl shadow-lg bg-surface-light dark:bg-surface-dark overflow-hidden border border-border-light dark:border-border-dark">
+                <div class="relative w-full h-32 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=90");'>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3">
+                        <div class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-md self-start">Em andamento</div>
+                    </div>
+                </div>
+                <div class="p-3 flex flex-col gap-2">
+                    <h3 class="text-base font-bold leading-tight">Finanças com Propósito</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs">Módulo 2: Dizimar com Alegria</p>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <span class="text-[10px] font-medium text-slate-500">45% Concluído</span>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="snap-center shrink-0 w-[280px] flex flex-col rounded-2xl shadow-lg bg-surface-light dark:bg-surface-dark overflow-hidden border border-border-light dark:border-border-dark">
+                <div class="relative w-full h-32 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1609234656388-0ff363383899?w=800&q=90");'>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-3">
+                        <div class="bg-yellow-500 text-white text-[10px] font-bold px-2 py-1 rounded-md self-start">Quase lá!</div>
+                    </div>
+                </div>
+                <div class="p-3 flex flex-col gap-2">
+                    <h3 class="text-base font-bold leading-tight">Liderança Cristã</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs">Módulo 5: Servindo com Amor</p>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <span class="text-[10px] font-medium text-slate-500">90% Concluído</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explorar Cursos -->
+    <section class="flex flex-col gap-4 mt-4">
+        <div class="px-4">
+            <h3 class="text-[20px] font-bold leading-tight tracking-tight">Explorar Cursos</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Conteúdo para seu crescimento espiritual</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 px-4 pb-6">
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1490730141103-6cac27abb37f?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div class="absolute top-2 right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">NOVO</div>
+                </div>
+                <h4 class="font-bold text-sm">Novos na Fé</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">8 Lições • Iniciante</p>
+            </div>
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                </div>
+                <h4 class="font-bold text-sm">Teologia Básica</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">12 Lições • Intermediário</p>
+            </div>
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                </div>
+                <h4 class="font-bold text-sm">Família Abençoada</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">10 Lições • Todos</p>
+            </div>
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                </div>
+                <h4 class="font-bold text-sm">Evangelismo Pessoal</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">6 Lições • Avançado</p>
+            </div>
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div class="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">POPULAR</div>
+                </div>
+                <h4 class="font-bold text-sm">Vida de Oração</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">8 Lições • Todos</p>
+            </div>
+            <div class="flex flex-col gap-2 cursor-pointer group">
+                <div class="aspect-square rounded-xl bg-cover bg-center relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1560439514-4e9645039924?w=600&q=90");'>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                </div>
+                <h4 class="font-bold text-sm">Jovens com Propósito</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">7 Lições • Jovens</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- TELA DEVOCIONAIS -->
+<div id="screen-devotional" class="screen flex-col min-h-screen pb-24">
+    <header class="flex-none bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center p-4 pb-2 justify-between">
+            <div class="flex flex-col">
+                <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">23 Dez • Manhã</span>
+                <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Reflexões Diárias</h2>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="flex items-center justify-center h-10 w-10 rounded-full bg-slate-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-xl">music_note</span>
+                </button>
+                <div class="flex items-center gap-1.5 h-10 px-3 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20">
+                    <span class="material-symbols-outlined text-lg filled">local_fire_department</span>
+                    <span class="text-sm font-bold">12</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+        <!-- Versículo do dia -->
+        <div class="p-4 w-full">
+            <div class="relative w-full h-72 rounded-xl overflow-hidden shadow-lg">
+                <div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=90");'></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-6">
+                    <span class="px-2 py-1 rounded bg-white/20 backdrop-blur-md text-xs font-semibold text-white uppercase tracking-wide w-fit mb-2">Versículo do Dia</span>
+                    <h3 class="text-white text-2xl font-bold leading-tight">Salmos 23:1</h3>
+                    <p class="text-slate-100 text-base font-medium leading-relaxed opacity-90 mt-2">
+                        "O Senhor é o meu pastor; nada me faltará."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Histórico de reflexões -->
+        <div class="px-4 mb-4">
+            <h3 class="text-lg font-bold mb-3">Suas Reflexões Recentes</h3>
+
+            <!-- Reflexão de hoje -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 mb-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">HOJE</span>
+                    <span class="text-xs text-slate-500">23 de Dezembro</span>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">Meditei sobre a provisão de Deus em minha vida. Mesmo nos momentos difíceis, Ele tem sido fiel...</p>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-yellow-500 text-sm filled">star</span>
+                    <span class="text-xs text-slate-500">Gratidão</span>
+                </div>
+            </div>
+
+            <!-- Reflexão de ontem -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 mb-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-slate-500">22 de Dezembro</span>
+                </div>
+                <p class="text-sm font-medium text-slate-800 dark:text-white mb-1">Filipenses 4:13</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">Aprendi que minha força vem de Cristo. Hoje enfrentei um desafio no trabalho com mais confiança...</p>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-blue-500 text-sm filled">shield</span>
+                    <span class="text-xs text-slate-500">Força</span>
+                </div>
+            </div>
+
+            <!-- Reflexão anterior -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 mb-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-slate-500">21 de Dezembro</span>
+                </div>
+                <p class="text-sm font-medium text-slate-800 dark:text-white mb-1">Provérbios 3:5-6</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">Confiar no Senhor de todo coração. Decidi entregar minhas preocupações sobre o futuro...</p>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-purple-500 text-sm filled">favorite</span>
+                    <span class="text-xs text-slate-500">Confiança</span>
+                </div>
+            </div>
+
+            <!-- Reflexão anterior -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 mb-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-slate-500">20 de Dezembro</span>
+                </div>
+                <p class="text-sm font-medium text-slate-800 dark:text-white mb-1">Mateus 6:33</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">Buscar primeiro o Reino de Deus. Reorganizei minhas prioridades e coloquei Deus em primeiro lugar...</p>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-green-500 text-sm filled">eco</span>
+                    <span class="text-xs text-slate-500">Prioridades</span>
+                </div>
+            </div>
+
+            <!-- Reflexão anterior -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-slate-500">19 de Dezembro</span>
+                </div>
+                <p class="text-sm font-medium text-slate-800 dark:text-white mb-1">Isaías 41:10</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">Não temas, porque eu sou contigo. Senti a presença de Deus durante um momento de ansiedade...</p>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-orange-500 text-sm filled">self_improvement</span>
+                    <span class="text-xs text-slate-500">Paz</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Input de reflexão -->
+    <div class="fixed bottom-[80px] left-0 w-full bg-gradient-to-t from-white dark:from-background-dark to-transparent px-4 pb-2 pt-8 z-40">
+        <div class="flex items-end gap-2 w-full max-w-3xl mx-auto">
+            <button class="flex-none h-12 w-12 rounded-xl bg-slate-100 dark:bg-surface-dark text-slate-500 flex items-center justify-center">
+                <span class="material-symbols-outlined">mic</span>
+            </button>
+            <div class="flex-1 bg-slate-100 dark:bg-surface-dark rounded-xl flex items-center shadow-sm">
+                <input class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder-slate-400 py-3 px-4 text-base focus:outline-none" placeholder="Escreva sua reflexão de hoje..." type="text"/>
+            </div>
+            <button class="flex-none h-12 w-12 rounded-xl bg-primary text-white shadow-lg flex items-center justify-center">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- TELA ORAÇÕES -->
+<div id="screen-worship" class="screen flex-col min-h-screen pb-24">
+    <header class="flex items-center p-4 pb-2 justify-between sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-white/5">
+        <div class="flex size-12 shrink-0 items-center justify-start cursor-pointer">
+            <span class="material-symbols-outlined">menu</span>
+        </div>
+        <h2 class="text-lg font-bold leading-tight flex-1 text-center">Orações da Comunidade</h2>
+        <button class="flex items-center justify-center rounded-xl size-10">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+    </header>
+
+    <div class="flex-1 overflow-y-auto pb-8 no-scrollbar">
+        <!-- Tabs -->
+        <div class="flex px-4 py-3">
+            <div class="flex h-12 flex-1 items-center justify-center rounded-xl bg-gray-200 dark:bg-[#292e38] p-1">
+                <label class="flex cursor-pointer h-full grow items-center justify-center rounded-[10px] px-2 text-slate-500 text-sm font-medium" onclick="showPrayerTab('global')">
+                    <span>Global</span>
+                </label>
+                <label class="flex cursor-pointer h-full grow items-center justify-center rounded-[10px] px-2 bg-white dark:bg-background-dark shadow-sm text-primary font-bold text-sm" onclick="showPrayerTab('church')">
+                    <span>Minha Igreja</span>
+                </label>
+                <label class="flex cursor-pointer h-full grow items-center justify-center rounded-[10px] px-2 text-slate-500 text-sm font-medium" onclick="showPrayerTab('mine')">
+                    <span>Meus Pedidos</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Banner da Igreja -->
+        <div class="p-4 pt-2">
+            <div class="relative overflow-hidden bg-cover bg-center flex flex-col justify-end rounded-2xl pt-[120px] shadow-lg" style='background-image: url("https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1200&q=90");'>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                <div class="relative z-10 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="material-symbols-outlined text-white text-sm">church</span>
+                        <span class="text-white/80 text-xs font-bold uppercase tracking-wider">Igreja Batista Central</span>
+                    </div>
+                    <p class="text-white text-lg font-bold">Bem-vindo à nossa comunidade!</p>
+                    <p class="text-white/80 text-sm mt-1">247 membros orando juntos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Próximos Cultos -->
+        <div class="px-4 mb-4">
+            <h3 class="text-lg font-bold mb-3">Próximos Cultos</h3>
+            <div class="space-y-3">
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519491050282-cf00c82424d5?w=100&q=80');"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-sm">Culto de Domingo</p>
+                        <p class="text-xs text-slate-500">Dom, 24 Dez • 19:00</p>
+                        <p class="text-xs text-primary mt-1">Pr. Carlos Silva</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80');"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-sm">Culto de Natal</p>
+                        <p class="text-xs text-slate-500">Seg, 25 Dez • 10:00</p>
+                        <p class="text-xs text-primary mt-1">Pr. André Moreira</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80');"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-sm">Estudo Bíblico</p>
+                        <p class="text-xs text-slate-500">Qua, 27 Dez • 19:30</p>
+                        <p class="text-xs text-primary mt-1">Pra. Maria Santos</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pedidos de Oração -->
+        <div class="px-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-lg font-bold">Pedidos de Oração</h3>
+                <span class="text-xs text-primary font-bold">Ver todos</span>
+            </div>
+
+            <!-- Pedido 1 -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-white/5 mb-3">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80');"></div>
+                    <div>
+                        <p class="text-sm font-bold">Ana Carolina</p>
+                        <p class="text-xs text-slate-500">Há 10 min</p>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">Peço orações pela saúde do meu pai. Ele está internado e precisamos de um milagre. Confio no poder da oração!</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-400"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">+45</div>
+                    </div>
+                    <button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-primary text-sm filled">volunteer_activism</span>
+                        <span class="text-xs font-bold text-primary">Orar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pedido 2 -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-white/5 mb-3">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80');"></div>
+                    <div>
+                        <p class="text-sm font-bold">Pedro Henrique</p>
+                        <p class="text-xs text-slate-500">Há 25 min</p>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">Amanhã tenho uma entrevista de emprego muito importante. Orem para que Deus abra essa porta para minha família.</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">+32</div>
+                    </div>
+                    <button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-primary text-sm filled">volunteer_activism</span>
+                        <span class="text-xs font-bold text-primary">Orar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pedido 3 -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-white/5 mb-3">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80');"></div>
+                    <div>
+                        <p class="text-sm font-bold">Juliana Martins</p>
+                        <p class="text-xs text-slate-500">Há 1 hora</p>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">Gratidão! Deus respondeu nossas orações. Minha mãe recebeu alta do hospital hoje! Glória a Deus!</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-400"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">+78</div>
+                    </div>
+                    <button class="flex items-center gap-2 bg-green-500/10 px-3 py-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-green-500 text-sm filled">celebration</span>
+                        <span class="text-xs font-bold text-green-500">Amém!</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pedido 4 -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-white/5 mb-3">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80');"></div>
+                    <div>
+                        <p class="text-sm font-bold">Roberto Silva</p>
+                        <p class="text-xs text-slate-500">Há 2 horas</p>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">Orem pelo meu casamento. Estamos passando por um momento difícil e precisamos da direção de Deus.</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">+56</div>
+                    </div>
+                    <button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-primary text-sm filled">volunteer_activism</span>
+                        <span class="text-xs font-bold text-primary">Orar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pedido 5 -->
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-white/5">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-10 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80');"></div>
+                    <div>
+                        <p class="text-sm font-bold">Fernanda Costa</p>
+                        <p class="text-xs text-slate-500">Há 3 horas</p>
+                    </div>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">Estou grávida de 7 meses! Peço orações para que o bebê nasça com saúde. Deus é fiel!</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-400"></div>
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-bold">+89</div>
+                    </div>
+                    <button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-primary text-sm filled">volunteer_activism</span>
+                        <span class="text-xs font-bold text-primary">Orar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão flutuante -->
+    <button class="fixed bottom-24 right-4 z-30 bg-primary text-white rounded-full p-4 shadow-xl">
+        <span class="material-symbols-outlined">add</span>
+    </button>
+</div>
+
+<!-- TELA COMUNIDADE -->
+<div id="screen-community" class="screen flex-col min-h-screen pb-24">
+    <header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center p-4 justify-between">
+            <div class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 dark:border-slate-700">
+                <div class="w-full h-full bg-cover" style='background-image: url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80");'></div>
+            </div>
+            <h2 class="text-lg font-bold flex-1 text-center">Comunidade</h2>
+            <button class="relative flex items-center justify-center rounded-xl size-10">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto pb-8 no-scrollbar">
+        <!-- Lives ao Vivo -->
+        <div class="px-4 py-4">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-lg font-bold">Ao Vivo Agora</h3>
+                <span class="flex items-center gap-1 text-red-500 text-xs font-bold">
+                    <span class="w-2 h-2 bg-red-500 rounded-full live-pulse"></span>
+                    LIVE
+                </span>
+            </div>
+            <div class="flex overflow-x-auto gap-4 no-scrollbar pb-2">
+                <!-- Live 1 -->
+                <div class="shrink-0 w-48 rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="aspect-[3/4] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519834089823-af2d966a9929?w=600&q=90');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                    <div class="absolute top-2 left-2 flex items-center gap-1 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full live-pulse"></span>
+                        AO VIVO
+                    </div>
+                    <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
+                        <span class="material-symbols-outlined text-xs">visibility</span>
+                        1.2k
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-3">
+                        <p class="text-white font-bold text-sm">Pra. Maria Santos</p>
+                        <p class="text-white/80 text-xs">Oração da Manhã</p>
+                    </div>
+                </div>
+                <!-- Live 2 -->
+                <div class="shrink-0 w-48 rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="aspect-[3/4] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=90');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                    <div class="absolute top-2 left-2 flex items-center gap-1 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full live-pulse"></span>
+                        AO VIVO
+                    </div>
+                    <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
+                        <span class="material-symbols-outlined text-xs">visibility</span>
+                        856
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-3">
+                        <p class="text-white font-bold text-sm">Pr. Carlos Silva</p>
+                        <p class="text-white/80 text-xs">Estudo de Romanos</p>
+                    </div>
+                </div>
+                <!-- Live 3 -->
+                <div class="shrink-0 w-48 rounded-xl overflow-hidden shadow-lg relative">
+                    <div class="aspect-[3/4] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=90');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                    <div class="absolute top-2 left-2 flex items-center gap-1 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full live-pulse"></span>
+                        AO VIVO
+                    </div>
+                    <div class="absolute top-2 right-2 flex items-center gap-1 bg-black/50 text-white text-[10px] px-2 py-1 rounded">
+                        <span class="material-symbols-outlined text-xs">visibility</span>
+                        2.3k
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-3">
+                        <p class="text-white font-bold text-sm">Pr. André Moreira</p>
+                        <p class="text-white/80 text-xs">Louvor e Adoração</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meus Círculos -->
+        <div class="flex flex-col w-full">
+            <h3 class="text-base font-bold px-4 py-2">Meus Círculos</h3>
+            <div class="flex w-full overflow-x-auto no-scrollbar px-4 pb-4 gap-4">
+                <div class="flex flex-col items-center gap-2 w-20 shrink-0">
+                    <div class="w-full aspect-[3/4] rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center bg-slate-100 dark:bg-surface-dark">
+                        <span class="material-symbols-outlined text-slate-400">add</span>
+                    </div>
+                    <p class="text-xs font-medium opacity-70">Criar</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-20 shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] bg-cover rounded-xl ring-2 ring-primary relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&q=90");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-1 right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <p class="text-xs font-bold text-primary">Jovens</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-20 shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] bg-cover rounded-xl relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&q=90");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <p class="text-xs font-medium">Casais</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-20 shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] bg-cover rounded-xl relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=90");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <p class="text-xs font-medium">Louvor</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 w-20 shrink-0 cursor-pointer">
+                    <div class="w-full aspect-[3/4] bg-cover rounded-xl relative overflow-hidden" style='background-image: url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&q=90");'>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <p class="text-xs font-medium">Missões</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eventos da Igreja -->
+        <div class="px-4 mb-4">
+            <h3 class="text-base font-bold mb-3">Eventos da Igreja</h3>
+            <div class="bg-gradient-to-r from-primary to-blue-600 rounded-xl p-4 text-white mb-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined">celebration</span>
+                    <span class="text-xs font-bold uppercase">Evento Especial</span>
+                </div>
+                <h4 class="text-lg font-bold">Culto de Natal</h4>
+                <p class="text-white/80 text-sm">25 de Dezembro • 10:00</p>
+                <button class="mt-3 bg-white text-primary font-bold py-2 px-4 rounded-lg text-sm">Confirmar Presença</button>
+            </div>
+            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=90');"></div>
+                    <div class="flex-1">
+                        <p class="font-bold text-sm">Retiro de Jovens 2024</p>
+                        <p class="text-xs text-slate-500">15-17 Janeiro • Acampamento Monte Sinai</p>
+                        <p class="text-xs text-primary mt-1">45 confirmados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discussões -->
+        <div class="px-4 mb-4">
+            <h3 class="text-base font-bold mb-3">Discussões Recentes</h3>
+            <div class="space-y-3">
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80');"></div>
+                        <div>
+                            <p class="text-sm font-bold">Pr. Carlos</p>
+                            <p class="text-[10px] text-slate-500">Há 2h</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Como vocês estão aplicando o sermão de domingo sobre perdão em suas vidas?</p>
+                    <div class="flex items-center gap-4 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700">
+                        <span class="flex items-center gap-1 text-xs text-slate-500">
+                            <span class="material-symbols-outlined text-sm">thumb_up</span> 34
+                        </span>
+                        <span class="flex items-center gap-1 text-xs text-slate-500">
+                            <span class="material-symbols-outlined text-sm">chat</span> 12 respostas
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80');"></div>
+                        <div>
+                            <p class="text-sm font-bold">Ana Paula</p>
+                            <p class="text-[10px] text-slate-500">Há 5h</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Alguém tem indicação de livros sobre vida devocional para iniciantes?</p>
+                    <div class="flex items-center gap-4 mt-3 pt-3 border-t border-slate-100 dark:border-slate-700">
+                        <span class="flex items-center gap-1 text-xs text-slate-500">
+                            <span class="material-symbols-outlined text-sm">thumb_up</span> 18
+                        </span>
+                        <span class="flex items-center gap-1 text-xs text-slate-500">
+                            <span class="material-symbols-outlined text-sm">chat</span> 8 respostas
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão flutuante -->
+    <button class="fixed bottom-24 right-4 z-30 bg-primary text-white rounded-full p-4 shadow-xl">
+        <span class="material-symbols-outlined">edit</span>
+    </button>
+</div>
+
+<!-- TELA PERFIL -->
+<div id="screen-profile" class="screen flex-col min-h-screen pb-24">
+    <header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center justify-between px-4 h-14">
+            <button class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="text-base font-bold flex-1 text-center">Perfil</h1>
+            <div class="w-10"></div>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col w-full max-w-md mx-auto pb-10">
+        <div class="flex flex-col items-center pt-8 pb-8 px-6">
+            <div class="relative cursor-pointer">
+                <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-surface-light dark:border-surface-dark shadow-lg">
+                    <img alt="Foto de perfil" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"/>
+                </div>
+                <div class="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-4 border-background-light dark:border-background-dark">
+                    <span class="material-symbols-outlined text-[18px]">edit</span>
+                </div>
+            </div>
+            <h2 class="mt-4 text-2xl font-bold">João Paulo</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">@joaopaulo_faith</p>
+            <div class="flex gap-3 mt-5 flex-wrap justify-center">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
+                    <span class="material-symbols-outlined text-orange-500 text-[18px] filled">local_fire_department</span>
+                    <span class="text-primary text-sm font-bold">12 dias</span>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-surface-dark rounded-full">
+                    <span class="material-symbols-outlined text-slate-500 text-[18px]">church</span>
+                    <span class="text-slate-600 dark:text-slate-300 text-sm">Batista Central</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 mb-2">
+            <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider ml-4 mb-2">Conta</h3>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+                <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-primary">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <p class="text-base font-medium">Informações Pessoais</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </button>
+                <div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+                <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-50 dark:bg-green-500/10 text-green-600">
+                            <span class="material-symbols-outlined">volunteer_activism</span>
+                        </div>
+                        <p class="text-base font-medium">Dízimos e Ofertas</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="px-4 mb-2 mt-6">
+            <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider ml-4 mb-2">App</h3>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+                <div class="w-full flex items-center justify-between p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700/30 text-slate-600 dark:text-slate-300">
+                            <span class="material-symbols-outlined">dark_mode</span>
+                        </div>
+                        <p class="text-base font-medium">Modo Escuro</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input checked="" class="sr-only peer" type="checkbox" id="darkModeToggle"/>
+                        <div class="w-11 h-6 bg-slate-200 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    </label>
+                </div>
+                <div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+                <button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-500/10 text-purple-600">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </div>
+                        <p class="text-base font-medium">Notificações</p>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="px-4 mb-6 mt-6">
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+                <button class="w-full flex items-center justify-between p-4 hover:bg-red-50 dark:hover:bg-red-900/10">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400">
+                            <span class="material-symbols-outlined">logout</span>
+                        </div>
+                        <p class="text-red-600 dark:text-red-400 text-base font-medium">Sair</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="px-4 text-center mt-2 pb-6">
+            <p class="text-xs text-slate-400">GLORIA v1.0.0</p>
+            <p class="text-xs text-slate-400 mt-1">Soli Deo Gloria</p>
+        </div>
+    </main>
+</div>
+
+<!-- NAVEGAÇÃO INFERIOR -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 z-50">
+    <div class="flex justify-around items-center h-20 max-w-lg mx-auto px-4">
+        <button onclick="showScreen('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 p-2 text-primary">
+            <span class="material-symbols-outlined text-[26px] filled">home</span>
+            <span class="text-[10px] font-medium">Início</span>
+        </button>
+        <button onclick="showScreen('devotional')" id="nav-devotional" class="nav-btn flex flex-col items-center gap-1 p-2 text-slate-400">
+            <span class="material-symbols-outlined text-[26px]">menu_book</span>
+            <span class="text-[10px] font-medium">Devocionais</span>
+        </button>
+        <button onclick="showScreen('worship')" id="nav-worship" class="nav-btn flex flex-col items-center gap-1 p-2 text-slate-400">
+            <span class="material-symbols-outlined text-[26px]">volunteer_activism</span>
+            <span class="text-[10px] font-medium">Orações</span>
+        </button>
+        <button onclick="showScreen('community')" id="nav-community" class="nav-btn flex flex-col items-center gap-1 p-2 text-slate-400">
+            <span class="material-symbols-outlined text-[26px]">groups</span>
+            <span class="text-[10px] font-medium">Comunidade</span>
+        </button>
+        <button onclick="showScreen('profile')" id="nav-profile" class="nav-btn flex flex-col items-center gap-1 p-2 text-slate-400">
+            <span class="material-symbols-outlined text-[26px]">person</span>
+            <span class="text-[10px] font-medium">Perfil</span>
+        </button>
+    </div>
+</nav>
+
+<script>
+    function showScreen(screenName) {
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.remove('active');
+        });
+        document.getElementById('screen-' + screenName).classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-slate-400');
+            btn.querySelector('.material-symbols-outlined').classList.remove('filled');
+        });
+        const activeBtn = document.getElementById('nav-' + screenName);
+        activeBtn.classList.remove('text-slate-400');
+        activeBtn.classList.add('text-primary');
+        activeBtn.querySelector('.material-symbols-outlined').classList.add('filled');
+        window.scrollTo(0, 0);
+    }
+
+    document.getElementById('darkModeToggle')?.addEventListener('change', function() {
+        document.documentElement.classList.toggle('dark', this.checked);
+    });
+
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then((reg) => console.log('Service Worker registrado:', reg.scope))
+                .catch((err) => console.log('Erro ao registrar SW:', err));
+        });
+    }
+</script>
+
+</body>
+</html>
