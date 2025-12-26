@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devocional Guiado por IA</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-dark": "#1e2430",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white overflow-hidden">
+<header class="flex-none bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">24 Out • Manhã</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Reflexão Diária</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center h-10 w-10 rounded-full bg-slate-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">music_note</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-orange-500/10 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 border border-orange-500/20">
+<span class="material-symbols-outlined text-lg fill-1">local_fire_department</span>
+<span class="text-sm font-bold">12</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar relative w-full pb-48">
+<div class="p-4 w-full">
+<div class="relative w-full h-80 rounded-xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Paisagem pacífica de montanhas ao nascer do sol com neblina" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCC0bx2NwkAOCbDdVx8g-BFE2SrZUyTx7vUiHqeMZbe5CQx6t9ys88go0xBhjVavRxqklFOxN6GVn24Dk4akKz9mDN628j05luMRtWeiJD-4C6B5ZdImPy6Y3ylcWGHiXhI7V1sSpHKg9reC3oNBIt2DyCrS5-ThrVTNpdJCjRX3FnwJm51Jzyv6-fJ9cXxJ61Yp1wpyfZmPtoc6FFZsP_3N2S64YVDl01QgLqjmfVt2v4BJ3uVydMdhWLtKTWautm998p_SwwYJoZ5");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute inset-0 flex flex-col justify-end p-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-1 rounded bg-white/20 backdrop-blur-md text-xs font-semibold text-white uppercase tracking-wide border border-white/10">Versículo do Dia</span>
+</div>
+<h3 class="text-white text-3xl font-bold leading-tight tracking-tight">Tiago 1:4</h3>
+<p class="text-slate-100 text-lg font-medium leading-relaxed opacity-90">
+                            "E a perseverança deve ter ação completa, para que sejais perfeitos e íntegros, sem faltar em nada."
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 pb-2">
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center">
+<p class="text-slate-900 dark:text-white text-sm font-bold">Sequência Semanal</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">5/7 Dias</p>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 71%;"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 py-4">
+<h3 class="px-4 text-slate-900 dark:text-white text-lg font-bold leading-tight">Foque seu coração</h3>
+<div class="flex gap-3 px-4 overflow-x-auto no-scrollbar pb-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-white pl-4 pr-4 transition-transform active:scale-95 shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span class="text-sm font-semibold">Gratidão</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 pl-4 pr-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="text-sm font-medium">Ansiedade</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 pl-4 pr-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="text-sm font-medium">Perdão</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-2 rounded-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 pl-4 pr-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="text-sm font-medium">Paciência</span>
+</button>
+</div>
+</div>
+<div class="px-4 pt-2 flex flex-col gap-6">
+<div class="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-widest px-2">
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+                Guia de Hoje
+                <div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<div class="flex gap-4 items-start animate-fade-in-up">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-white text-sm">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-2 max-w-[85%]">
+<div class="p-4 rounded-2xl rounded-tl-none bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700/50 shadow-sm">
+<p class="text-slate-700 dark:text-slate-200 text-base leading-relaxed">
+                            Bom dia, David. Com base na oração de ontem sobre paciência, pensei que Tiago 1:4 seria significativo para nós.
+                        </p>
+<p class="text-slate-700 dark:text-slate-200 text-base leading-relaxed mt-3">
+                            Ao ler "a perseverança deve ter ação completa", que tipo de "obra" você sente que Deus está fazendo em seu coração agora?
+                        </p>
+</div>
+<div class="flex gap-2 mt-1">
+<button class="px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bookmark</span> Salvar Reflexão
+                        </button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-400 text-xs font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">ios_share</span> Compartilhar
+                        </button>
+</div>
+</div>
+</div>
+<div class="flex gap-4 items-start justify-end">
+<div class="flex flex-col gap-2 max-w-[85%] items-end">
+<div class="p-4 rounded-2xl rounded-tr-none bg-primary text-white shadow-md shadow-primary/20">
+<p class="text-base leading-relaxed">
+                            Sinto que estou preso em um período de espera, e é frustrante. Só quero saber o próximo passo.
+                        </p>
+</div>
+<span class="text-xs text-slate-400 mr-1">09:42</span>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-white text-sm">auto_awesome</span>
+</div>
+<div class="flex flex-col gap-2 max-w-[85%]">
+<div class="p-4 rounded-2xl rounded-tl-none bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-700/50 shadow-sm">
+<p class="text-slate-700 dark:text-slate-200 text-base leading-relaxed">
+                            Essa frustração é muito humana. A "espera" é frequentemente onde o "amadurecimento" acontece, como sugere o versículo. <br/><br/>Vamos tirar um momento para orar sobre confiar no tempo certo. Você gostaria de começar, ou prefere que eu faça uma oração por paz?
+                        </p>
+</div>
+</div>
+</div>
+<div class="h-6"></div>
+</div>
+</main>
+<div class="fixed bottom-[84px] left-0 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent px-4 pb-2 pt-8 z-40">
+<div class="flex items-end gap-2 w-full max-w-3xl mx-auto">
+<button class="flex-none h-12 w-12 rounded-xl bg-slate-100 dark:bg-surface-dark text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<div class="flex-1 bg-slate-100 dark:bg-surface-dark rounded-xl flex items-center border border-transparent focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-sm">
+<input class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-0 py-3 px-4 text-base" placeholder="Digite ou fale sua reflexão..." type="text"/>
+</div>
+<button class="flex-none h-12 w-12 rounded-xl bg-primary text-white shadow-lg shadow-primary/30 hover:bg-blue-700 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 z-50 pb-6 pt-2 px-2">
+<div class="flex justify-around items-end w-full max-w-lg mx-auto">
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-medium">Início</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform fill-1">menu_book</span>
+<span class="text-[10px] font-medium">Devocionais</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">queue_music</span>
+<span class="text-[10px] font-medium">Adoração</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">diversity_3</span>
+<span class="text-[10px] font-medium">Comunidade</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</div>
+</nav>
+
+</body></html>

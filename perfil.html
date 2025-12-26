@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil e Configurações</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2333",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+<div class="flex items-center justify-between px-4 h-14">
+<button class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-base font-bold leading-tight flex-1 text-center">Perfil e Configurações</h1>
+<div class="w-10 flex justify-end">
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full max-w-md mx-auto pb-10">
+<div class="flex flex-col items-center pt-8 pb-8 px-6">
+<div class="relative group cursor-pointer">
+<div class="w-28 h-28 rounded-full overflow-hidden border-4 border-surface-light dark:border-surface-dark shadow-lg">
+<img alt="Retrato de Sarah Jenkins sorrindo calorosamente sob luz natural" class="w-full h-full object-cover" data-alt="Portrait of Sarah Jenkins smiling warmly in natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB151Wt29PVZpxFwRpu9fsv6TliOeF-uzZLBhyEFQvGmSF7UAiACt9sIrTlgj9PnF4QfwMBoOk5fgWcq75qbBS-Q8LMNM2RXPxNwcG0q4b4YR3iRc2X0EeUSmAjwVq8xj71X_-FlYZo29LwTqgO7sMYFkgT47dSj8IdwMFHDweFWYXsq99ijCQzNvfuFafUTZnqEgWxvjSARPZRURRQqOjSwaq3BWJ8dj9xEU6vpCyIm26uJqSBj40rnNBfwwwz4Fa45EWUmJByeIfE"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-4 border-background-light dark:border-background-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</div>
+</div>
+<h2 class="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Sarah Jenkins</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">@sarahj_faith</p>
+<div class="flex gap-3 mt-5">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 dark:bg-primary/20 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[18px] fill-1">local_fire_department</span>
+<span class="text-primary text-sm font-bold">Sequência de 12 Dias</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-surface-dark rounded-full border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-[18px]">calendar_month</span>
+<span class="text-slate-600 dark:text-slate-300 text-sm font-medium">Membro desde 2023</span>
+</div>
+</div>
+</div>
+<div class="px-4 mb-2">
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider ml-4 mb-2">Conta</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-primary shrink-0">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Informações Pessoais</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</button>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-primary shrink-0">
+<span class="material-symbols-outlined">volunteer_activism</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Dízimos e Ofertas</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</button>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-primary shrink-0">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Segurança e Privacidade</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="px-4 mb-2 mt-6">
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider ml-4 mb-2">Experiência do App</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 shrink-0">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Notificações</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</button>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Guia Devocional IA</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-400 text-sm hidden sm:block">Compassivo</span>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</div>
+</button>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+<div class="w-full flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-700/30 text-slate-600 dark:text-slate-300 shrink-0">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Modo Escuro</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="px-4 mb-6 mt-6">
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider ml-4 mb-2">Suporte</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800/50">
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 shrink-0">
+<span class="material-symbols-outlined">help</span>
+</div>
+<div class="text-left">
+<p class="text-slate-900 dark:text-white text-base font-medium">Ajuda e Suporte</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">chevron_right</span>
+</button>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 mx-16"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 shrink-0">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<div class="text-left">
+<p class="text-red-600 dark:text-red-400 text-base font-medium">Sair</p>
+</div>
+</div>
+</button>
+</div>
+</div>
+<div class="px-4 text-center mt-2 pb-6">
+<p class="text-xs text-slate-400 dark:text-slate-500">Versão 2.4.0 (Build 302)</p>
+<p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Soli Deo Gloria</p>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 px-6 flex justify-between items-center z-50 h-[80px]">
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">home</span>
+<span class="text-[10px] font-medium">Início</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">menu_book</span>
+<span class="text-[10px] font-medium">Devocionais</span>
+</button>
+<div class="relative -top-6">
+<button aria-label="Adoração" class="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-primary/40 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]">church</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px]">diversity_3</span>
+<span class="text-[10px] font-medium">Comunidade</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary transition-colors">
+<span class="material-symbols-outlined text-[26px] fill-1">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</nav>
+<div class="h-[80px] w-full"></div>
+
+</body></html>
